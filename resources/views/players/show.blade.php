@@ -109,9 +109,9 @@
                             @if($goal->match)
                                 <a href="{{ route('matches.show', $goal->match->match_id) }}"
                                    class="text-gray-700 hover:underline hover:text-gray-900 font-medium">
-                                    {{ $goal->match->homeTeam?->team_code }}
+                                    {{ $goal->match->homeTeam?->flag_emoji }}
                                     <span class="font-bold">{{ $goal->match->home_score }}–{{ $goal->match->away_score }}</span>
-                                    {{ $goal->match->awayTeam?->team_code }}
+                                    {{ $goal->match->awayTeam?->flag_emoji }}
                                 </a>
                             @endif
                         </td>
