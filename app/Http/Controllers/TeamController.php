@@ -12,13 +12,19 @@ class TeamController extends Controller
 {
     public function index(): View
     {
-        $teams = Team::withCount(['qualifiedTournaments as appearances'])
+        $gender = $this->gender();
+        $tids = Tournament::forGender($gender)->pluck('tournament_id');
+
+        $teams = Team::whereHas('qualifiedTournaments', fn ($q) => $q->whereIn('tournament_id', $tids))
+            ->withCount(['qualifiedTournaments as appearances' => fn ($q) => $q->whereIn('tournament_id', $tids)])
             ->orderByDesc('appearances')
             ->orderBy('team_name')
             ->get();
 
-        $teams = $teams->map(function ($team) {
-            $team->titles_count = Tournament::where('winner_team_id', $team->team_id)->count();
+        $teams = $teams->map(function ($team) use ($tids) {
+            $team->titles_count = Tournament::whereIn('tournament_id', $tids)
+                ->where('winner_team_id', $team->team_id)
+                ->count();
             return $team;
         });
 
