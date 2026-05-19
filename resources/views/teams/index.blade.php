@@ -11,7 +11,7 @@
         @foreach($teams as $team)
         <a href="{{ route('teams.show', $team->team_id) }}"
            class="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-green-400 hover:shadow-sm transition-all">
-            <div class="text-3xl mb-2">{{ $team->flag_emoji }}</div>
+            <div class="text-3xl mb-2">{!! $team->flag_img !!}</div>
             <div class="text-sm font-semibold text-gray-900">{{ $team->team_name }}</div>
             <div class="text-xs text-gray-400 mt-1">{{ $team->confederation }}</div>
             <div class="mt-2 flex justify-center gap-3 text-xs text-gray-500">

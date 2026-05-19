@@ -40,14 +40,14 @@
                 <i class="ti ti-trophy text-yellow-500"></i>
                 <span class="font-medium">Winner:</span>
                 <a href="{{ route('teams.show', $tournament->winner->team_id) }}" class="hover:underline">
-                    {{ $tournament->winner->flag_emoji }} {{ $tournament->winner->team_name }}
+                    {!! $tournament->winner->flag_img !!} {{ $tournament->winner->team_name }}
                 </a>
             </div>
             @if($tournament->runnerUp)
             <div class="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5">
                 <span class="text-gray-500">Runner-up:</span>
                 <a href="{{ route('teams.show', $tournament->runnerUp->team_id) }}" class="hover:underline">
-                    {{ $tournament->runnerUp->flag_emoji }} {{ $tournament->runnerUp->team_name }}
+                    {!! $tournament->runnerUp->flag_img !!} {{ $tournament->runnerUp->team_name }}
                 </a>
             </div>
             @endif
@@ -55,7 +55,7 @@
             <div class="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5">
                 <span class="text-gray-500">3rd place:</span>
                 <a href="{{ route('teams.show', $tournament->thirdPlace->team_id) }}" class="hover:underline">
-                    {{ $tournament->thirdPlace->flag_emoji }} {{ $tournament->thirdPlace->team_name }}
+                    {!! $tournament->thirdPlace->flag_img !!} {{ $tournament->thirdPlace->team_name }}
                 </a>
             </div>
             @endif
@@ -119,7 +119,7 @@
                         <tr class="border-b border-gray-50 last:border-0 {{ $i < 2 ? 'border-l-2 border-l-green-500' : '' }}">
                             <td class="px-3 py-2">
                                 <a href="{{ route('teams.show', $qt->team->team_id) }}" class="flex items-center gap-1.5 hover:underline">
-                                    <span>{{ $qt->team->flag_emoji }}</span>
+                                    <span class="text-lg">{!! $qt->team->flag_img !!}</span>
                                     <span class="font-medium text-gray-900">{{ $qt->team->team_name }}</span>
                                 </a>
                             </td>
@@ -163,7 +163,7 @@
                         <td class="px-4 py-3 text-sm text-gray-600">
                             @if($scorer->team)
                             <a href="{{ route('teams.show', $scorer->team->team_id) }}" class="hover:underline">
-                                {{ $scorer->team->flag_emoji }} {{ $scorer->team->team_name }}
+                                {!! $scorer->team->flag_img !!} {{ $scorer->team->team_name }}
                             </a>
                             @endif
                         </td>
@@ -186,7 +186,7 @@
             @foreach($squadTeams as $team)
             <a href="{{ route('tournaments.squad', [$tournament->year, $team->team_id]) }}"
                class="inline-flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm hover:border-green-400 hover:shadow-sm transition-all">
-                <span>{{ $team->flag_emoji }}</span>
+                <span>{!! $team->flag_img !!}</span>
                 <span class="font-medium text-gray-700">{{ $team->team_name }}</span>
             </a>
             @endforeach
@@ -203,7 +203,7 @@
                 <div class="flex items-center px-4 py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50">
                     <div class="flex-1 text-right">
                         <a href="{{ route('teams.show', $match->homeTeam->team_id) }}" class="font-medium text-gray-900 hover:underline">
-                            {{ $match->homeTeam->team_name ?? '?' }} {{ $match->homeTeam?->flag_emoji }}
+                            {{ $match->homeTeam->team_name ?? '?' }} {!! $match->homeTeam?->flag_img !!}
                         </a>
                     </div>
                     <div class="w-28 text-center flex-shrink-0">
@@ -223,7 +223,7 @@
                     </div>
                     <div class="flex-1 text-left">
                         <a href="{{ route('teams.show', $match->awayTeam->team_id) }}" class="font-medium text-gray-900 hover:underline">
-                            {{ $match->awayTeam?->flag_emoji }} {{ $match->awayTeam->team_name ?? '?' }}
+                            {!! $match->awayTeam?->flag_img !!} {{ $match->awayTeam->team_name ?? '?' }}
                         </a>
                     </div>
                 </div>

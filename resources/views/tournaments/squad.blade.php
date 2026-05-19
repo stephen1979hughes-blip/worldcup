@@ -9,7 +9,7 @@
         / Squads /
     </p>
     <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl">{{ $team->flag_emoji }}</span>
+        <span class="text-4xl">{!! $team->flag_img !!}</span>
         <div>
             <h1 class="text-2xl font-bold text-gray-900">{{ $team->team_name }}</h1>
             @if($manager?->manager)

@@ -36,7 +36,7 @@
                         <td class="px-4 py-2.5 text-gray-500">
                             @if($scorer->player?->team)
                             <a href="{{ route('teams.show', $scorer->player->team->team_id) }}" class="hover:underline">
-                                {{ $scorer->player->team->flag_emoji }} {{ $scorer->player->team->team_code }}
+                                {!! $scorer->player->team->flag_img !!} {{ $scorer->player->team->team_code }}
                             </a>
                             @endif
                         </td>
@@ -73,7 +73,7 @@
                         </td>
                         <td class="px-4 py-2.5 text-gray-500">
                             @if($row->player?->team)
-                                {{ $row->player->team->flag_emoji }} {{ $row->player->team->team_code }}
+                                {!! $row->player->team->flag_img !!} {{ $row->player->team->team_code }}
                             @endif
                         </td>
                         <td class="px-4 py-2.5 text-center font-bold text-blue-600 text-base">{{ $row->tournaments }}</td>
@@ -110,7 +110,7 @@
                             @if($award->player)
                             <a href="{{ route('players.show', $award->player->player_id) }}" class="hover:underline">
                                 {{ $award->player->full_name }}
-                                @if($award->player->team) <span class="text-gray-400 text-xs">({{ $award->player->team->flag_emoji }} {{ $award->player->team->team_code }})</span> @endif
+                                @if($award->player->team) <span class="text-gray-400 text-xs">({!! $award->player->team->flag_img !!} {{ $award->player->team->team_code }})</span> @endif
                             </a>
                             @endif
                         </td>
@@ -145,9 +145,9 @@
                             </a>
                         </td>
                         <td class="px-4 py-2.5">
-                            {{ $match->homeTeam?->flag_emoji }} {{ $match->homeTeam?->team_name }}
+                            {!! $match->homeTeam?->flag_img !!} {{ $match->homeTeam?->team_name }}
                             <span class="text-gray-400">vs</span>
-                            {{ $match->awayTeam?->flag_emoji }} {{ $match->awayTeam?->team_name }}
+                            {!! $match->awayTeam?->flag_img !!} {{ $match->awayTeam?->team_name }}
                         </td>
                         <td class="px-4 py-2.5 text-center font-bold text-gray-900">
                             {{ $match->home_score }}–{{ $match->away_score }}

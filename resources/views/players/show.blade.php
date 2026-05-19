@@ -18,7 +18,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ $player->full_name }}</h1>
             @if($player->team)
             <a href="{{ route('teams.show', $player->team->team_id) }}" class="text-gray-500 hover:underline">
-                {{ $player->team->flag_emoji }} {{ $player->team->team_name }}
+                {!! $player->team->flag_img !!} {{ $player->team->team_name }}
             </a>
             @endif
             @if($player->birth_year)
@@ -109,9 +109,9 @@
                             @if($goal->match)
                                 <a href="{{ route('matches.show', $goal->match->match_id) }}"
                                    class="text-gray-700 hover:underline hover:text-gray-900 font-medium">
-                                    {{ $goal->match->homeTeam?->flag_emoji }}
+                                    {!! $goal->match->homeTeam?->flag_img !!}
                                     <span class="font-bold">{{ $goal->match->home_score }}–{{ $goal->match->away_score }}</span>
-                                    {{ $goal->match->awayTeam?->flag_emoji }}
+                                    {!! $goal->match->awayTeam?->flag_img !!}
                                 </a>
                             @endif
                         </td>

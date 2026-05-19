@@ -49,7 +49,7 @@
             @if($t->winner)
             <div class="mt-2 text-xs text-gray-700 flex items-center justify-center gap-1">
                 <i class="ti ti-trophy text-yellow-500 text-xs"></i>
-                <span>{{ $t->winner->flag_emoji }} {{ $t->winner->team_name }}</span>
+                <span>{!! $t->winner->flag_img !!} {{ $t->winner->team_name }}</span>
             </div>
             @endif
             <div class="mt-1.5 text-xs text-gray-400">{{ $t->num_teams }} teams · {{ $t->num_matches }} matches</div>

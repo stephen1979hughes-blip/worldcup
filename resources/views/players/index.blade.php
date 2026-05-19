@@ -69,7 +69,7 @@
             @if($player->given_name)
             <div class="text-xs text-gray-400 truncate">{{ $player->given_name }}</div>
             @endif
-            <div class="text-xs text-gray-500 mt-1">{{ $player->team?->flag_emoji }} {{ $player->team?->team_code }}</div>
+            <div class="text-xs text-gray-500 mt-1">{!! $player->team?->flag_img !!} {{ $player->team?->team_code }}</div>
             <div class="mt-2 flex justify-center gap-2 text-xs text-gray-500">
                 <span title="Tournaments">🏆 {{ $player->tournament_count }}</span>
                 <span title="Goals">⚽ {{ $player->wc_goals }}</span>

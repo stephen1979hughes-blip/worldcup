@@ -27,7 +27,7 @@
             {{-- Home team --}}
             <div class="flex-1 text-right">
                 <a href="{{ route('teams.show', $match->homeTeam->team_id) }}" class="hover:underline">
-                    <div class="text-4xl mb-1">{{ $match->homeTeam->flag_emoji }}</div>
+                    <div class="text-4xl mb-1">{!! $match->homeTeam->flag_img !!}</div>
                     <div class="text-lg font-bold text-gray-900">{{ $match->homeTeam->team_name }}</div>
                 </a>
             </div>
@@ -54,7 +54,7 @@
             {{-- Away team --}}
             <div class="flex-1 text-left">
                 <a href="{{ route('teams.show', $match->awayTeam->team_id) }}" class="hover:underline">
-                    <div class="text-4xl mb-1">{{ $match->awayTeam->flag_emoji }}</div>
+                    <div class="text-4xl mb-1">{!! $match->awayTeam->flag_img !!}</div>
                     <div class="text-lg font-bold text-gray-900">{{ $match->awayTeam->team_name }}</div>
                 </a>
             </div>
@@ -177,7 +177,7 @@
         @foreach([['team' => $match->homeTeam, 'appearances' => $homeAppearances], ['team' => $match->awayTeam, 'appearances' => $awayAppearances]] as $side)
         <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
             <div class="px-5 py-3 border-b border-gray-100 flex items-center gap-2">
-                <span>{{ $side['team']->flag_emoji }}</span>
+                <span>{!! $side['team']->flag_img !!}</span>
                 <h2 class="font-semibold text-gray-900 text-sm">{{ $side['team']->team_name }}</h2>
             </div>
             <div class="divide-y divide-gray-50">

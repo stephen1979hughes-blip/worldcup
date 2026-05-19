@@ -11,7 +11,7 @@
 
     {{-- Header --}}
     <div class="flex items-center gap-4 mb-8">
-        <div class="text-5xl">{{ $team->flag_emoji }}</div>
+        <div class="text-5xl">{!! $team->flag_img !!}</div>
         <div>
             <h1 class="text-2xl font-bold text-gray-900">{{ $team->team_name }}</h1>
             <div class="text-sm text-gray-500">{{ $team->confederation }} · {{ $team->team_code }}</div>

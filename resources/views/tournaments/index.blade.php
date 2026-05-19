@@ -20,7 +20,7 @@
             <div class="text-right flex-shrink-0">
                 <div class="flex items-center gap-1.5 text-sm font-medium text-gray-700">
                     <i class="ti ti-trophy text-yellow-500"></i>
-                    {{ $t->winner->flag_emoji }} {{ $t->winner->team_name }}
+                    {!! $t->winner->flag_img !!} {{ $t->winner->team_name }}
                 </div>
             </div>
             @endif
