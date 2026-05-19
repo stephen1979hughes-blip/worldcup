@@ -31,6 +31,7 @@ Route::prefix('teams')->name('teams.')->group(function () {
     Route::get('/{teamId}', [TeamController::class, 'show'])->name('show');
 });
 
+Route::get('/matches', [\App\Http\Controllers\MatchController::class, 'index'])->name('matches.index');
 Route::get('/matches/{matchId}', [\App\Http\Controllers\MatchController::class, 'show'])->name('matches.show');
 
 Route::get('/records', [RecordsController::class, 'index'])->name('records');

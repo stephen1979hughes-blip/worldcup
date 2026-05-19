@@ -7,10 +7,45 @@ use App\Models\Goal;
 use App\Models\MatchModel;
 use App\Models\PlayerAppearance;
 use App\Models\Squad;
+use App\Models\Team;
+use App\Models\Tournament;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class MatchController extends Controller
 {
+    public function index(Request $request): View
+    {
+        $gender = $this->gender();
+        $tournaments = Tournament::forGender($gender)->orderByDesc('year')->get();
+        $teams = Team::orderBy('team_name')->get();
+
+        $query = MatchModel::with(['homeTeam', 'awayTeam', 'tournament'])
+            ->whereHas('tournament', fn ($q) => $q->forGender($gender));
+
+        if ($request->filled('year')) {
+            $query->whereHas('tournament', fn ($q) => $q->where('year', $request->year));
+        }
+
+        if ($request->filled('team')) {
+            $query->where(fn ($q) => $q
+                ->where('home_team_id', $request->team)
+                ->orWhere('away_team_id', $request->team)
+            );
+        }
+
+        if ($request->filled('stage')) {
+            $query->where('stage_name', $request->stage);
+        }
+
+        $matches = $query->orderByDesc('match_date')->orderBy('match_id')->paginate(30)->withQueryString();
+
+        $stages = MatchModel::whereHas('tournament', fn ($q) => $q->forGender($gender))
+            ->distinct()->orderBy('stage_name')->pluck('stage_name');
+
+        return view('matches.index', compact('matches', 'tournaments', 'teams', 'stages'));
+    }
+
     public function show(string $matchId): View
     {
         $match = MatchModel::with([

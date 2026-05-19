@@ -47,6 +47,10 @@
                        class="px-3 py-1.5 rounded-md text-sm {{ request()->routeIs('teams.*') ? 'bg-gray-100 font-medium text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900' }}">
                         Teams
                     </a>
+                    <a href="{{ route('matches.index') }}"
+                       class="px-3 py-1.5 rounded-md text-sm {{ request()->routeIs('matches.index') ? 'bg-gray-100 font-medium text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900' }}">
+                        Matches
+                    </a>
                     <a href="{{ route('records') }}"
                        class="px-3 py-1.5 rounded-md text-sm {{ request()->routeIs('records') ? 'bg-gray-100 font-medium text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900' }}">
                         Records
